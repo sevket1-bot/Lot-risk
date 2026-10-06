@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d1621">
+  <meta name="description" content="Integral MT5 kontrat özelliklerine göre hızlı lot ve risk hesaplayıcı">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>LOT Risk Hesaplayıcı</title>
+
+  <style>
+    :root{
+      --bg:#09111a;--panel:#111c28;--line:#26384b;
+      --text:#f5f7fa;--muted:#94a6b8;--accent:#3ea6ff;
+      --green:#36d399;--red:#ff6b6b;--yellow:#ffc857;
+      --shadow:0 12px 30px rgba(0,0,0,.28);--radius:18px
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif
+    }
+
+    body{
+      padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)
+    }
+
+    .app{
+      max-width:720px;
+      margin:0 auto;
+      padding:18px 16px 34px
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:14px
+    }
+
+    .brand{
+      font-weight:800;
+      font-size:21px
+    }
+
+    .badge{
+      font-size:12px;
+      color:#d9ecff;
+      border:1px solid #2a4b68;
+      background:#10263a;
+      padding:6px 9px;
+      border-radius:999px
+    }
+
+    .card{
+      background:linear-gradient(180deg,var(--panel),#0f1924);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+      margin-top:12px
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:7px
+    }
+
+    .field.full{
+      grid-column:1/-1
+    }
+
+    label{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
+      letter-spacing:.25px
+    }
+
+    input,select,button{
+      width:100%;
+      border:1px solid #2d4357;
+      background:#0c1620;
+      color:var(--text);
+      min-height:50px;
+      border-radius:13px;
+      padding:0 13px;
+      font-size:18px;
+      outline:none
+    }
+
+    input:focus,select:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px rgba(62,166,255,.15)
+    }
+
+    .account-field{
+      align-items:center
+    }
+
+    .account-input{
+      width:min(260px,100%);
+      text-align:center;
+      font-size:22px;
+      font-weight:850
+    }
+
+    .quick{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
+      width:100%;
+      margin-top:8px
+    }
+
+    .quick button{
+      width:100%;
+      min-height:42px;
+      padding:0 8px;
+      font-size:14px;
+      background:#132538
+    }
+
+    .quick button.active{
+      border-color:var(--accent);
+      background:#11314b;
+      color:#dff1ff
+    }
+
+    .side{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px
+    }
+
+    .side button{
+      background:#13202e;
+      font-weight:800;
+      font-size:15px
+    }
+
+    .side button.buy.active{
+      background:#123c31;
+      border-color:var(--green);
+      color:#aef0d3
+    }
+
+    .side button.sell.active{
+      background:#402024;
+      border-color:var(--red);
+      color:#ffc2c2
+    }
+
+    .optional{
+      font-size:11px;
+     
