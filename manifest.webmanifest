@@ -1,0 +1,11 @@
+{
+  "name": "LOT Risk Hesaplayıcı",
+  "short_name": "LOT Risk",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#09111a",
+  "theme_color": "#09111a",
+  "description": "MetaTrader 5 hızlı lot ve risk hesaplayıcı"
+}
